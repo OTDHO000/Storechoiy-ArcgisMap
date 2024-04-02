@@ -69,6 +69,21 @@ export default function ArcgisMap (props){
                         name: "score",
                         alias: "score",
                         type: "integer"
+                    },
+                    {
+                      name: "accessibility",
+                      alias: "accessibility",
+                      type: "integer"
+                    },
+                    {
+                      name: "competition",
+                      alias: "competition",
+                      type: "integer"
+                    },
+                    {
+                      name: "demographic",
+                      alias: "demographic",
+                      type: "integer"
                     }
                 ],
                 objectIdField: "ObjectID",
@@ -93,12 +108,24 @@ export default function ArcgisMap (props){
                           label: "Score"
                         },
                         {
+                          fieldName: "rent",
+                          label: "Rent"
+                        },
+                        {
                             fieldName: "facilities",
                             label: "Facilities"
                           },
                         {
-                          fieldName: "rent",
-                          label: "Rent"
+                          fieldName: "competition",
+                          label: "Competition"
+                        },
+                        {
+                          fieldName: "accessibility",
+                          label: "Accessibility"
+                        },
+                        {
+                          fieldName: "demographic",
+                          label: "Demographic"
                         }
                       ]
                     }
