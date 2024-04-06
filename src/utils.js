@@ -21,7 +21,7 @@ export default function callAPIs(embeddedSearchFields, setAllPlaces, setSchedule
        
     }
     console.log("requestObject:-----------",requestObject)
-    axios.post('http://8.134.162.73:80/SCapi/search/queryinfo', requestObject).then( (response) => { //http://localhost:5000/plan   8.134.162.73:80/SCapi
+    axios.post('http://localhost:5000/SCapi/search/queryinfo', requestObject).then( (response) => { //http://localhost:5000/SCapi   8.134.162.73:80/SCapi
         const newAllPlaces = [];
         if(response.data.status==="success"){
             response.data.places.forEach(element => {

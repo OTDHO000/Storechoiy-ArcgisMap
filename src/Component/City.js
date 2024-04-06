@@ -25,21 +25,26 @@ export default function City(props) {
   } =props.paramValue
 
 
-  const [blocks, setBlocks] =useState([{id:1,name:'Tsuen Wan'},{id:2,name:'Lei Muk Shue'},{id:3,name:'Ting Kau'},{id:3,name:'Sham Tseng'},{id:4,name:'Ma Wan'}])
+  const [blocks, setBlocks] =useState([{id:1,name:'Tsuen Wan'},{id:2,name:'Lei Muk Shue'},{id:3,name:'Ting Kau'},{id:4,name:'Sham Tseng'},{id:5,name:'Ma Wan'}])
   
   // const [kwaitsing, setkwaitsing] = useState([{id:1,name:'Kwai Chung'},{id:2,name:'Tsing Yi'}])
-  const [tsuenwan, settsuenwan] = useState([{id:1,name:'Tsuen Wan'},{id:2,name:'Lei Muk Shue'},{id:3,name:'Ting Kau'},{id:3,name:'Sham Tseng'},{id:4,name:'Ma Wan'}])
+  const [tsuenwan, settsuenwan] = useState([{id:1,name:'Tsuen Wan'},{id:2,name:'Lei Muk Shue'},{id:3,name:'Ting Kau'},{id:4,name:'Sham Tseng'},{id:5,name:'Ma Wan'}])
   const [sub_districtArr] = useState([{id:1,name:'Tsing Yi'},{id:2,name:'Kwai Chung'}])
   const [industrylist] =useState(['restaurant'])
   const [typelist] = useState([{id:"RL",name:"General Restaurant"},{id:"RR",name:"Light Refreshment Restaurant"}])
-  const [districtArr] = useState([{id:1,name:'Kwai Tsing District'},{id:2,name:'Tsuen Wan District'}])  
+  const [districtArr] = useState([{id:1,name:'Kwai Tsing District'},{id:2,name:'Tsuen Wan District'},{id:3,name:'Island District'},{id:4,name:'North District'},{id:5,name:'Sai Kung District'},
+  {id:6,name:'Sha Tin District'},{id:7,name:'Tai Po District'},{id:8,name:'Tuen Mun District'},{id:9,name:'Yuen Long District'},{id:10,name:'Kowloon City District'},{id:11,name:'Kwun Tong District'},
+  {id:12,name:'Sham Shui Po District'},{id:13,name:'Wong Tai Sin District'},{id:14,name:'Yau Tsim Mong District'},{id:15,name:'Central and Western District'},{id:16,name:'Eastern District'},{id:17,name:'Southern District'},
+  {id:18,name:'Wan Chai District'}])  
 
   const handleDistrict = (event) =>{
     if(event.target.value === 'Kwai Tsing District'){
-      setBlocks(sub_districtArr) 
+      setBlocks(sub_districtArr)
+      setSubDistrict(sub_districtArr[0].name) // set sub-district automatically 
     }
     if(event.target.value === 'Tsuen Wan District'){
-      setBlocks(tsuenwan) 
+      setBlocks(tsuenwan)
+      setSubDistrict(tsuenwan[0].name) // set sub-district automatically 
     }
     setDistrict(event.target.value) 
   }
@@ -55,7 +60,7 @@ export default function City(props) {
 
 // The following lines are commends that use to interface the backend results to frontend
 
-  const start = 400;
+  const start = 5000;
   const end = 50000;
   const step = 100;
 
@@ -78,7 +83,6 @@ export default function City(props) {
         <li>
           <label id="industry-label">Industry: </label><br/>
           <select
-              labelId="industry-label"
               id="industry-select"
               value={industry}
               style={{width: '120px'}}
@@ -90,7 +94,6 @@ export default function City(props) {
         <li>
           <label id="demo-select-label">Type: </label><br/>
             <select
-                labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={type}
                 onChange={(event)=>setType(event.target.value)}
@@ -104,7 +107,6 @@ export default function City(props) {
         <li>
           <label id="demo-simple-select-label">District: </label><br/>
           <select
-              labelId="demo-simple-select-label"
               id="district-select"
               value={district}
               onChange={handleDistrict}
@@ -118,11 +120,9 @@ export default function City(props) {
         <li>
           <label id="second-level">Sub_District: </label><br/>  
           <select
-              labelId="second-level"
               id="second-level-select"
               value={sub_district}
               onChange={(event)=>setSubDistrict(event.target.value)}
-              defaultValue="Sub-District"
               style={{width: '120px'}}
             >
               {blocks && blocks.map(item =>
